@@ -1,0 +1,48 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mycode="clr-namespace:MauiBase"
+             x:Class="MauiBase.Views.NotePage">
+
+
+    <!--C#中可以使用DeviceInfo.Platform == DevicePlatform.iOS 来判断平台-->
+    <!--一种更简单的方式 根据平台设置-->
+    <VerticalStackLayout x:Name="MyStackLayout" BackgroundColor="{OnPlatform WinUI='#CCCCFF', Android='#CCCCFF'}">
+        <!--根据设备平台属性不同 注意设置的属性名 padding的Arguments属性是Thickness-->
+        <VerticalStackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS" Value="30"/>
+                <On Platform="WinUI" Value="30, 20, 30, 30"/>
+            </OnPlatform>
+        </VerticalStackLayout.Padding>
+        <Grid HeightRequest="500">
+            <Image Source="girl.jpg" Aspect="AspectFill"/>
+            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
+                <Label Text="Text on the image" TextColor="Black" FontSize="30"/>
+                <Label Text="Notes"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold" 
+                   FontSize="15"/>
+                <!--由x:Static引入字体颜色静态资源 区别于上面的通过ProvideValue方法引入 静态资源直接引用字段即可-->
+                <Editor x:Name="editor"
+                    MaximumWidthRequest="700"
+                    PlaceholderColor="Black"
+                    Placeholder="Enter your note"
+                    Text="kawaii"
+                    HeightRequest="{OnPlatform 150, Android=500, iOS=500}" 
+                    TextColor="{x:Static Member=mycode:SharedResources.FontColor}" 
+                    BackgroundColor="White"/>
+                <Grid ColumnDefinitions="Auto,30,Auto" Margin="0, 20, 0, 20" HorizontalOptions="Center">
+                    <Button Grid.Column="0"
+                        Text="Save" 
+                        WidthRequest="100"
+                        Clicked="OnSaveButtonClicked" />
+                    <Button Grid.Column="2"
+                        Text="Delete" 
+                        WidthRequest="100"
+                        Clicked="OnDeleteButtonClicked" />
+                </Grid>
+            </VerticalStackLayout>
+        </Grid>
+    </VerticalStackLayout>
+
+</ContentPage>

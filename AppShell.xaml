@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiBase.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:MauiBase.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <ShellContent
+            Title="Navigation"
+            ContentTemplate="{DataTemplate views:Navigation}"/>
+        <ShellContent
+            Title="Clock"
+            ContentTemplate="{DataTemplate views:ClockPage}"/>
+        <ShellContent
+            Title="About"
+            ContentTemplate="{DataTemplate views:AboutPage}"/>
+        <ShellContent
+            Title="DataBind"
+            ContentTemplate="{DataTemplate views:DataBind}"/>
+        <ShellContent
+            Title="Note"
+            ContentTemplate="{DataTemplate views:NotePage}"/>
+        <ShellContent
+            Title="ColorSelector"
+            ContentTemplate="{DataTemplate views:ColorSelectPage}"/>
+        <ShellContent
+            Title="ColorList"
+            ContentTemplate="{DataTemplate views:ColorListPage}"/>
+    </TabBar>
+
+
+</Shell>

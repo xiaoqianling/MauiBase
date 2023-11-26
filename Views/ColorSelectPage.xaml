@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:MauiBase.Models"
+             x:Class="MauiBase.Views.ColorSelectPage"
+             Title="ColorSelectPage">
+    <ContentPage.BindingContext>
+        <sys:ColorSelectViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Label 
+            Text="{Binding HSLColorHex,StringFormat='HSL Color Selector: {0:X6}'}"
+            FontSize="20"
+            TextColor="{Binding HSLColor}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label Text="{Binding Hue, StringFormat='Hue = {0:F2}'}"
+               HorizontalOptions="Center" />
+        <Slider Value="{Binding Hue}"
+                Margin="20,0,20,0" />
+        <Label Text="{Binding Saturation, StringFormat='Saturation = {0:F2}'}"
+               HorizontalOptions="Center" />
+        <Slider Value="{Binding Saturation}"
+                Margin="20,0,20,0" />
+        <Label Text="{Binding Luminosity, StringFormat='Luminosity = {0:F2}'}"
+               HorizontalOptions="Center" />
+        <Slider Value="{Binding Luminosity}"
+                Minimum="0.01"
+                Margin="20,0,20,0" />
+
+        <Label 
+            Text="{Binding RGBColorHex, StringFormat='RGB Color Selector: {0}'}"
+            FontSize="20"
+            Margin="0,40,0,0"
+            TextColor="{Binding RGBColor}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label Text="{Binding Red, StringFormat='Red = {0:F2}'}"
+               HorizontalOptions="Center" />
+        <Slider Value="{Binding Red}"
+                Margin="20,0,20,0" />
+        <Label Text="{Binding Green, StringFormat='Green = {0:F2}'}"
+               HorizontalOptions="Center" />
+        <Slider Value="{Binding Green}"
+                Margin="20,0,20,0" />
+        <Label Text="{Binding Blue, StringFormat='Blue = {0:F2}'}"
+               HorizontalOptions="Center" />
+        <Slider Value="{Binding Blue}"
+                Minimum="0.01"
+                Margin="20,0,20,0" />
+    </VerticalStackLayout>
+</ContentPage>
