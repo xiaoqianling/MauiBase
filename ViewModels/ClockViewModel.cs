@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace MauiBase.Models
+namespace MauiBase.ViewModels
 {
     class ClockViewModel: INotifyPropertyChanged
     {
@@ -18,7 +18,6 @@ namespace MauiBase.Models
                 if (_datetime.Second != value.Second)
                 {
                     _datetime = value;
-                    Debug.WriteLine(value);
                     OnPropertyChanged();
                 }
             }
@@ -40,11 +39,6 @@ namespace MauiBase.Models
         //  在属性改变时调用此方法 保持更新
         public void OnPropertyChanged([CallerMemberName] string name = "") 
         {
-            var list = PropertyChanged?.GetInvocationList();
-            foreach(var item in list)
-            {
-                Debug.WriteLine(item);
-            }
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         }

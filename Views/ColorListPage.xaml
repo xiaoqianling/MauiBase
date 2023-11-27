@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:MauiBase.Models"
+             xmlns:local="clr-namespace:MauiBase.ViewModels"
+             xmlns:converter="clr-namespace:MauiBase.Converters"
              x:Class="MauiBase.Views.ColorListPage"
              Title="ColorListPage">
     <ContentPage.Resources>
         <x:Double x:Key="BoxSize">50</x:Double>
-        <local:FloatToIntConverter x:Key="IntConverter"/>
+        <converter:FloatToIntConverter x:Key="IntConverter"/>
     </ContentPage.Resources>
 
     <ListView ItemsSource="{x:Static local:ColorList.All}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <VerticalStackLayout>
-                        <HorizontalStackLayout>
-                            <BoxView Color="{Binding Color}" 
+                    <HorizontalStackLayout Margin="2">
+                        <BoxView Color="{Binding Color}" 
                                      WidthRequest="{StaticResource BoxSize}" HeightRequest="{StaticResource BoxSize}"/>
-                            <VerticalStackLayout>
-                                <Label Text="{Binding FriendlyName}" FontSize="14" FontAttributes="Bold"/>
-                                <HorizontalStackLayout>
-                                    <Label Text="{Binding Red,
+                        <VerticalStackLayout>
+                            <Label Text="{Binding FriendlyName}" FontSize="14" FontAttributes="Bold"/>
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Red,
                                         Converter={StaticResource IntConverter},
                                         ConverterParameter=255,
                                         StringFormat='R={0:X2}'}"/>
-                                    <Label Text="{Binding Green,
+                                <Label Text="{Binding Green,
                                         Converter={StaticResource IntConverter},
                                         ConverterParameter=255,
                                         StringFormat='G={0:X2}'}"
                                            Margin="20,0,20,0"/>
-                                    <Label Text="{Binding Blue,
+                                <Label Text="{Binding Blue,
                                         Converter={StaticResource IntConverter},
                                         ConverterParameter=255,
                                         StringFormat='B={0:X2}'}"/>
-                                </HorizontalStackLayout>
-                            </VerticalStackLayout>
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>

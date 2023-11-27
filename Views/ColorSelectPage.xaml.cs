@@ -12,7 +12,7 @@ public partial class ColorSelectPage : ContentPage
 
     private void Initial()
 	{
-		Models.ColorSelectViewModel colorSelect = new() { HSLColor = Colors.Aqua, RGBColor = Colors.MediumPurple };
+        ViewModels.ColorSelectViewModel colorSelect = new() { HSLColor = Colors.Aqua, RGBColor = Colors.MediumPurple };
 		colorSelect.HSLColorHex = colorSelect.HSLColor.ToHex();
 		BindingContext = colorSelect;
 	}

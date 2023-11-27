@@ -9,16 +9,19 @@ namespace MauiBase.Views;
 
 public partial class NotePage : ContentPage
 {
-    string _fileName = Path.Combine(Directory.GetCurrentDirectory(), "notes.txt");
+    string _fileName = Path.Combine(AppContext.BaseDirectory, "notes.txt");
     public const double fontsize = 48;
     public NotePage()
     {
-        this.InitializeComponent();
-        Debug.Print(Directory.GetCurrentDirectory());
+        InitializeComponent();
         Debug.Print(_fileName);
         if (File.Exists(_fileName))
         {
             editor.Text = File.ReadAllText(_fileName);
+        } else
+        {
+            Debug.WriteLine("不存在note文件");
+            File.WriteAllText(_fileName, "kawaii");
         }
     }
     void OnSaveButtonClicked(object sender, EventArgs e)

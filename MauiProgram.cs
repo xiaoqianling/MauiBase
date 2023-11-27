@@ -6,6 +6,7 @@ namespace MauiBase
     {
         public static MauiApp CreateMauiApp()
         {
+            Console.WriteLine($"current:{Directory.GetCurrentDirectory()}");
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()

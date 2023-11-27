@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MauiBase.Models
+namespace MauiBase.ViewModels
 {
     partial class ColorSelectViewModel : INotifyPropertyChanged
     {

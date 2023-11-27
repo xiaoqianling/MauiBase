@@ -10,7 +10,7 @@ public partial class DataBind : ContentPage
 
     private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
-        valueLabel.Text = e.NewValue.ToString("F3");
+        valueLabel.Text = e.NewValue.ToString("F3"); 
     }
 
     private void Button_Clicked(object sender, EventArgs e)
