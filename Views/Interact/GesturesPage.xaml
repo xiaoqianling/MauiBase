@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiBase.Views.GesturesPage"
+             Title="Gestures">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Text="可拖动图片"/>
+            <Image Source="girl2.jpeg" WidthRequest="400">
+                <Image.GestureRecognizers>
+                    <DragGestureRecognizer/>
+                    <DropGestureRecognizer DragOver="OnDragOver"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <ImageButton Source="girl3.jpg" WidthRequest="200" />
+            <ActivityIndicator x:Name="activity" IsRunning="False"/>
+            <!--自定义拖动时的数据包 https://learn.microsoft.com/zh-cn/dotnet/maui/fundamentals/gestures/drag-and-drop-->
+            <Path Stroke="Black" WidthRequest="100" HeightRequest="100"
+                    StrokeThickness="4">  
+                <Path.GestureRecognizers>
+                    <DragGestureRecognizer DragStarting="OnDragStarting" />
+                </Path.GestureRecognizers>
+                <Path.Data>
+                    <!-- PathGeometry goes here -->
+                </Path.Data>
+            </Path>
+            <Line/>
+            <Rectangle Stroke="Red"
+                       Fill="DarkBlue"
+                       StrokeThickness="4"
+                       HeightRequest="200"
+                       WidthRequest="200">
+                <Rectangle.GestureRecognizers>
+
+                </Rectangle.GestureRecognizers>
+            </Rectangle>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace MauiBase.Views;
 
 public partial class ClockPage : ContentPage
@@ -6,4 +8,5 @@ public partial class ClockPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiBase.Views.NewWindowPage"
+             Title="">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add item" />
+        <ToolbarItem Text="Add item2" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout>
+        <Grid ColumnSpacing="10" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Clicked="NewWindow" Text="新窗口"></Button>
+            <Button Clicked="BtnDisplayAlert" Text="Alert" Grid.Row="1" Grid.Column="0"/>
+            <Button Clicked="BtnDisplaySheet" Text="Sheet" Grid.Row="1" Grid.Column="1"/>
+            <Button Clicked="BtnDisplayPrompt" Text="Prompt" Grid.Row="2" Grid.Column="0" 
+                    ToolTipProperties.Text="创建一个需要输入的交互框"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

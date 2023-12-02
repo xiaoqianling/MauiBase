@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiBase.ViewModels"
              xmlns:converter="clr-namespace:MauiBase.Converters"
-             x:Class="MauiBase.Views.ColorListPage"
-             Title="ColorListPage">
+             x:Class="MauiBase.Views.ColorListPage">
     <ContentPage.Resources>
         <x:Double x:Key="BoxSize">50</x:Double>
         <converter:FloatToIntConverter x:Key="IntConverter"/>

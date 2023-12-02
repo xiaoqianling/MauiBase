@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,38 +9,44 @@ namespace MauiBase.Util
 {
     class FileSearcher
     {
-        string SearchText { get; set; }
-        bool NestSearch { get; set; } = false;
+#nullable enable
+        public string? SearchText { get; set; }
+        public bool NestSearch { get; set; } = false;
 
         public FileSearcher(string searchText) { SearchText = searchText; }
+        public FileSearcher() { }
 
-        public IEnumerable<string> Search()
+        public List<string>? Search()
         {
+            if (SearchText == null || SearchText == string.Empty)
+                return null;
             var currentPath = AppContext.BaseDirectory;
             // files为绝对路径
+            var allFiles = new List<string>();
             var files = new List<string>();
             if (NestSearch)
             {
-                GetFilesInDirectory(currentPath, files);
+                GetFilesInDirectory(currentPath, allFiles);
             }
             else
             {
-                files = Directory.GetFiles(currentPath).ToList();
+                allFiles = Directory.GetFiles(currentPath).ToList();
             }
-            Console.WriteLine($"搜索关键字:{SearchText}");
-            foreach (var file in files)
+            foreach ( var file in allFiles)
             {
-                var filename = Path.GetFileName(file);
-                if (filename.Contains(SearchText))
+                if (file.Contains(SearchText))
                 {
-                    Console.WriteLine($"file:{Path.GetFileName(file)}");
-                    yield return filename;
+                    files.Add(file);
                 }
             }
+            Debug.WriteLine($"搜索关键字:{SearchText}");
+            return files;
         }
 
-        public IEnumerable<string> Search(string path)
+        public List<string>? Search(string path)
         {
+            if (SearchText == null || SearchText == string.Empty)
+                return null;
             var currentPath = path;
             // files为绝对路径
             var files = new List<string>();

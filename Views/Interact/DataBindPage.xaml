@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiBase.Views.DataBind"
+             x:Class="MauiBase.Views.DataBindPage"
              Title="DataBind">
     <ScrollView>
         <VerticalStackLayout>
@@ -13,56 +13,54 @@
             <!--通过对组件的BindingContext设置引用，来绑定组件之间的值-->
             <Label Text="组件间的简单数据绑定" HorizontalOptions="Center" Margin="0,50,0,0"/>
             <Slider x:Name="slider2" VerticalOptions="Center" MinimumTrackColor="Pink" Maximum="360" WidthRequest="300"/>
-            <Label Text="it rotates with slider" BindingContext="{x:Reference slider2}" Rotation="{Binding Path=Value}" HorizontalOptions="Center" FontSize="20"/>
+            <!--Name 和 Path是内容属性，可以删去-->
+            <Label Text="it rotates with slider" BindingContext="{x:Reference Name=slider2}" Rotation="{Binding Path=Value}" HorizontalOptions="Center" FontSize="20"/>
             <Label Text="{Binding Value, StringFormat='the rotation is {0:F0}'}" BindingContext="{x:Reference slider2}" HorizontalOptions="Center" FontSize="20"/>
 
-            <Label x:Name="label"
+            <Label x:Name="label1"
                Text="千灵"
                HorizontalOptions="Center"
                VerticalOptions="CenterAndExpand" />
-            <Label Text="复杂一点数据绑定，每个Slider控制字体的不同属性" FontSize="20" HorizontalOptions="Center" Margin="0,50,0,0"/>
+            <Label Text="每个Slider绑定到目标的一个属性" FontSize="20" HorizontalOptions="Center" Margin="0,50,0,0"/>
 
             <!-- 每个组件只能设置一个BindingContext 引用该属性时可以使用双向绑定Mode -->
             <Slider x:Name="scaleSlider"
-                BindingContext="{x:Reference label}"
+                BindingContext="{x:Reference label1}"
                 Grid.Row="1" Grid.Column="0"
                 Maximum="10"
                 Value="{Binding Scale, Mode=OneWayToSource}" />
-            <Label BindingContext="{x:Reference scaleSlider}"
-               Text="{Binding Value, StringFormat='控制缩放: Scale = {0:F1}'}"
-               Grid.Row="1" Grid.Column="1"
-               HorizontalOptions="Center"
-               VerticalTextAlignment="Center" />
+            <Label Text="{Binding Value, Source={x:Reference scaleSlider}, StringFormat='控制缩放: Scale = {0:F1}'}"
+                   RotationX="{Binding Value, Source={x:Reference rotationXSlider}}"
+                   Grid.Row="1" Grid.Column="1"
+                   HorizontalOptions="Center"
+                   VerticalTextAlignment="Center" />
             <!-- 单向绑定 Rotation属性 -->
             <Slider x:Name="rotationSlider"
-                BindingContext="{x:Reference label}"
+                BindingContext="{x:Reference label1}"
                 Grid.Row="2" Grid.Column="0"
                 Maximum="360"
                 Value="{Binding Rotation, Mode=OneWayToSource}" />
-            <Label BindingContext="{x:Reference rotationSlider}"
-               Text="{Binding Value, StringFormat='单向绑定 控制旋转: Rotation = {0:F0}'}"
+            <Label Text="{Binding Value, Source={x:Reference rotationSlider}, StringFormat='单向绑定 控制旋转: Rotation = {0:F0}'}"
                Grid.Row="2" Grid.Column="1"
                HorizontalOptions="Center"
                VerticalTextAlignment="Center" />
             <!-- 单向绑定 RotationX属性 -->
             <Slider x:Name="rotationXSlider"
-                BindingContext="{x:Reference label}"
+                BindingContext="{x:Reference label1}"
                 Grid.Row="2" Grid.Column="0"
                 Maximum="360"
                 Value="{Binding RotationX, Mode=OneWayToSource}" />
-            <Label BindingContext="{x:Reference rotationXSlider}"
-               Text="{Binding Value, StringFormat='控制X轴旋转: Rotation = {0:F0}'}"
+            <Label Text="{Binding Value, Source={x:Reference rotationXSlider},StringFormat='控制X轴旋转: Rotation = {0:F0}'}"
                Grid.Row="2" Grid.Column="1"
                HorizontalOptions="Center"
                VerticalTextAlignment="Center" />
             <!-- 单向绑定 RotationX属性 -->
             <Slider x:Name="rotationYSlider"
-                BindingContext="{x:Reference label}"
+                BindingContext="{x:Reference label1}"
                 Grid.Row="2" Grid.Column="0"
                 Maximum="360"
                 Value="{Binding RotationY, Mode=OneWayToSource}" />
-            <Label BindingContext="{x:Reference rotationYSlider}"
-               Text="{Binding Value, StringFormat='控制Y轴旋转: Rotation = {0:F0}'}"
+            <Label Text="{Binding Value, Source={x:Reference rotationYSlider}, StringFormat='控制Y轴旋转: Rotation = {0:F0}'}"
                Grid.Row="2" Grid.Column="1"
                HorizontalOptions="Center"
                VerticalTextAlignment="Center" />

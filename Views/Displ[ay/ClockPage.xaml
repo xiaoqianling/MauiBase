@@ -2,13 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sys="clr-namespace:MauiBase.ViewModels"
-             x:Class="MauiBase.Views.ClockPage"
-             Title="ClockPage">
+             x:Class="MauiBase.Views.ClockPage">
     <ContentPage.BindingContext>
         <sys:ClockViewModel/>
     </ContentPage.BindingContext>
-    <Label Text="{Binding DateTime, StringFormat='{0:T}'}"
-           FontSize="28"
-           HorizontalOptions="Center"
-           VerticalOptions="Center"/>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Text="{Binding DateTime, StringFormat='{0:T}'}"
+                   FontSize="28"
+                   HorizontalOptions="Center"/>
+            
+        </VerticalStackLayout>
+
+    </ScrollView>
+
 </ContentPage>

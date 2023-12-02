@@ -1,9 +1,9 @@
 namespace MauiBase.Views;
 
-public partial class DataBind : ContentPage
+public partial class DataBindPage : ContentPage
 {
     private int count = 0;
-	public DataBind()
+	public DataBindPage()
 	{
 		InitializeComponent();
 	}

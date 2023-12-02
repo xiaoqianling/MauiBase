@@ -3,32 +3,55 @@
     x:Class="MauiBase.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:MauiBase.Views"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:views="clr-namespace:MauiBase.Views">
 
-    <TabBar>
+    <TabBar FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent
             Title="Navigation"
             ContentTemplate="{DataTemplate views:Navigation}"/>
-        <ShellContent
-            Title="Clock"
-            ContentTemplate="{DataTemplate views:ClockPage}"/>
-        <ShellContent
-            Title="About"
-            ContentTemplate="{DataTemplate views:AboutPage}"/>
-        <ShellContent
-            Title="DataBind"
-            ContentTemplate="{DataTemplate views:DataBind}"/>
-        <ShellContent
-            Title="Note"
-            ContentTemplate="{DataTemplate views:NotePage}"/>
-        <ShellContent
-            Title="ColorSelector"
-            ContentTemplate="{DataTemplate views:ColorSelectPage}"/>
-        <ShellContent
-            Title="ColorList"
-            ContentTemplate="{DataTemplate views:ColorListPage}"/>
-    </TabBar>
+        <Tab Title="Interact">
+            <ShellContent
+                Title="DataBind"
+                ContentTemplate="{DataTemplate views:DataBindPage}"/>
+            <ShellContent
+                Title="Gestures"
+                ContentTemplate="{DataTemplate views:GesturesPage}"/>
+            <ShellContent
+                Title="Window"
+                ContentTemplate="{DataTemplate views:NewWindowPage}"/>
+        </Tab>
 
+        <Tab Title="Utility">
+            <ShellContent
+                Title="FileSearch"
+                ContentTemplate="{DataTemplate views:FileSearchPage}"/>
+            <ShellContent
+                Title="Note"
+                ContentTemplate="{DataTemplate views:NotePage}"/>
+            <ShellContent
+                Title="Moon"
+                ContentTemplate="{DataTemplate views:MoonPhasePage}"/>
+            <ShellContent
+                Title="Sunrise"
+                ContentTemplate="{DataTemplate views:SunrisePage}"/>
+            <ShellContent
+                Title="Weather"
+                ContentTemplate="{DataTemplate views:Weather}"/>
+        </Tab>
+        <Tab Title="Display">
+            <ShellContent
+                Title="ColorSelector"
+                ContentTemplate="{DataTemplate views:ColorSelectPage}"/>
+            <ShellContent
+                Title="ColorList"
+                ContentTemplate="{DataTemplate views:ColorListPage}"/>
+            <ShellContent
+                Title="About"
+                ContentTemplate="{DataTemplate views:AboutPage}"/>
+            <ShellContent
+                Title="Clock"
+                ContentTemplate="{DataTemplate views:ClockPage}"/>
+        </Tab>
+    </TabBar>
 
 </Shell>
